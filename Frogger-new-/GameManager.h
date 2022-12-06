@@ -6,7 +6,7 @@
 #include "AnimatedTexture.h"
 #include "InputManager.h"
 #include "AudioManager.h"
-
+#include"ScreenManager.h"
 namespace SDLFramework {
 	class GameManager
 	{
@@ -21,12 +21,11 @@ namespace SDLFramework {
 		Texture* m_pTexture;
 		SDL_Event mEvent;
 		Timer* m_pTimer;
-		GameEntity* mParent;
-		GameEntity* mChild;
+	
 		InputManager* m_pInputManager;
-		Texture* m_pFontTex;
-		AudioManager* m_pAudioManager;
 
+		AudioManager* m_pAudioManager;
+		ScreenManager* m_pScreenManager;
 	public:
 		static GameManager* Instance();
 		static void Release();

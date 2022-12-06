@@ -10,9 +10,9 @@ namespace SDLFramework {
 	class Graphics
 	{
 	public:
-		static const short SCREEN_WIDTH = 800;
-		static const short SCREEN_HEIGHT = 600;
-
+		static const short SCREEN_WIDTH = 581;
+		static const short SCREEN_HEIGHT = 569;
+		SDL_Renderer* m_pPubRenderer;
 	private:
 		static Graphics* sInstance;
 		static bool sInitialized;
@@ -23,6 +23,7 @@ namespace SDLFramework {
 		static Graphics* Instance();
 		static void Release();
 		static bool Initialized();
+	
 
 		void ClearBackBuffer();
 		void Render();

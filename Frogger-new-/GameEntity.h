@@ -3,7 +3,6 @@
 #include "MathHelper.h"
 
 namespace SDLFramework {
-
 	class GameEntity
 	{
 	public:
@@ -19,6 +18,7 @@ namespace SDLFramework {
 
 	public:
 		GameEntity(float x = 0.0f, float y = 0.0f);
+		GameEntity(const Vector2& pos);
 		~GameEntity();
 
 		void Position(float x, float y);
@@ -28,7 +28,6 @@ namespace SDLFramework {
 		void Rotation(float rotation);
 		float Rotation(Space space = World);
 
-		//this will shrink or grow our sprites if needed
 		void Scale(Vector2 scale);
 		Vector2 Scale(Space space = World);
 
@@ -38,13 +37,12 @@ namespace SDLFramework {
 		void Parent(GameEntity* parent);
 		GameEntity* Parent();
 
-		void Translate(Vector2 vec, Space space = Local); // use this function to move objects on screen
-		void Rotate(float amount); // use this one to rotate the objects on screen
+		void Translate(Vector2 vec, Space space = Local); // <------use this function to move objects on screen
+		void Rotate(float amount); // <-------- use this one to rotate the objects on screen
 
 		virtual void Update() {};
 		virtual void Render() {};
 	};
 }
-#endif //!_GAMEENTITY_H
-
+#endif // !_GAMEENTITY_H
 

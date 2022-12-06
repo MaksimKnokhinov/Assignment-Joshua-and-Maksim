@@ -70,6 +70,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -104,7 +107,7 @@ xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s</Command>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\shado\source\repos\School\Libraries\SDL2_mixer-devel-2.6.2-VC\SDL2_mixer-2.6.2\lib\x86\optional;C:\Users\shado\source\repos\School\Libraries\SDL2_image-devel-2.0.4-VC\SDL2_image-2.0.4\lib\x86;C:\Users\shado\source\repos\School\Libraries\SDL2_mixer-devel-2.6.2-VC\SDL2_mixer-2.6.2\lib\x86;C:\Users\shado\source\repos\School\Libraries\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\lib\x86;C:\Users\shado\source\repos\School\Libraries\SDL2-devel-2.24.2-VC\SDL2-2.24.2\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\shado\source\repos\School\Libraries\SDL2_mixer-devel-2.6.2-VC\SDL2_mixer-2.6.2\lib\x86\optional;C:\Users\shado\source\repos\School\Libraries\SDL2-devel-2.24.2-VC\SDL2-2.24.2\lib\x86;C:\Users\shado\source\repos\School\Libraries\SDL2_image-devel-2.0.4-VC\SDL2_image-2.0.4\lib\x86;C:\Users\shado\source\repos\School\Libraries\SDL2_mixer-devel-2.6.2-VC\SDL2_mixer-2.6.2\lib\x86;C:\Users\shado\source\repos\School\Libraries\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
@@ -153,6 +156,10 @@ xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PlayScreen.cpp" />
+    <ClCompile Include="ScoreBoard.cpp" />
+    <ClCompile Include="ScreenManager.cpp" />
+    <ClCompile Include="StartScreen.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
@@ -165,6 +172,10 @@ xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s</Command>
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="MathHelper.h" />
+    <ClInclude Include="PlayScreen.h" />
+    <ClInclude Include="ScoreBoard.h" />
+    <ClInclude Include="ScreenManager.h" />
+    <ClInclude Include="StartScreen.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>

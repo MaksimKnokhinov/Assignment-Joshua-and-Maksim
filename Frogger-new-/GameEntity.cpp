@@ -4,12 +4,13 @@ namespace SDLFramework {
 	GameEntity::GameEntity(float x, float y) :
 		mPosition(x, y), mRotation(0.0f), mScale(Vec2_One), mActive(true), mParent(nullptr) {}
 
-	GameEntity::~GameEntity() {
+	GameEntity::GameEntity(const Vector2& pos) : mPosition(pos), mRotation(0.0f), mScale(Vec2_One), mActive(true), mParent(nullptr) {}
 
+	GameEntity::~GameEntity() {
 		mParent = nullptr;
 	}
-	void GameEntity::Position(float x, float y) {
 
+	void GameEntity::Position(float x, float y) {
 		mPosition = Vector2(x, y);
 	}
 
@@ -19,7 +20,7 @@ namespace SDLFramework {
 
 	Vector2 GameEntity::Position(Space space) {
 		if (space == Local || mParent == nullptr) {
-			return mPosition; 
+			return mPosition;
 		}
 
 		GameEntity* parent = mParent;
@@ -31,9 +32,9 @@ namespace SDLFramework {
 				Vector2(finalPos.x * parentScale.x, finalPos.y * parentScale.y),
 				parent->Rotation(Local));
 
-			finalPos = parent->Position(Local);
+			finalPos = finalPos + parent->Position(Local);
 
-			parent = parent->Parent();			
+			parent = parent->Parent();
 		} while (parent != nullptr);
 
 		return finalPos;
@@ -97,7 +98,7 @@ namespace SDLFramework {
 			Vector2 parentScale = parent->Scale(World);
 
 			mPosition = RotateVector(Position(World) - parent->Position(World),
-			-parent->Rotation(World));
+				-parent->Rotation(World));
 
 			mPosition.x /= parentScale.x;
 			mPosition.y /= parentScale.y;
@@ -124,5 +125,4 @@ namespace SDLFramework {
 	void GameEntity::Rotate(float amount) {
 		mRotation += amount;
 	}
-
 }

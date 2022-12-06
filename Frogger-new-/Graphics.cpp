@@ -22,15 +22,18 @@ namespace SDLFramework {
 	bool Graphics::Initialized() {
 		return sInitialized;
 	}
+	void Graphics::Render() {
+		SDL_RenderPresent(m_pRenderer);
+		
+	}
+
+
 
 	void Graphics::ClearBackBuffer() {
 		SDL_RenderClear(m_pRenderer);
 	}
 
-	void Graphics::Render() {
-		SDL_RenderPresent(m_pRenderer);
-	}
-
+	
 	Graphics::Graphics() {
 		sInitialized = Init();
 	}
@@ -52,7 +55,7 @@ namespace SDLFramework {
 		}
 
 		m_pWindow = SDL_CreateWindow(
-			"SDL_Tutorial",
+			"Frogger 1981",
 			SDL_WINDOWPOS_UNDEFINED,
 			SDL_WINDOWPOS_UNDEFINED,
 			SCREEN_WIDTH,
@@ -63,7 +66,7 @@ namespace SDLFramework {
 			std::cerr << "Unable to create Window! SDL Error: " << SDL_GetError() << std::endl;
 			return false;
 		}
-
+		
 		m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, SDL_RENDERER_ACCELERATED);
 
 		if (m_pRenderer == nullptr) {
